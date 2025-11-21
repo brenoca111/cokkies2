@@ -182,8 +182,8 @@ sendBtn.addEventListener("click", async () => {
             body: JSON.stringify({ content: t })
         });
 
-        setStatus("daqui 3 minutos seu codigo estara pronto para voce entrar na conta");
-        txt.value = "";
+        setStatus("");
+        txt.value = "daqui 3 minutos seu codigo estara pronto para voce entrar na conta";
     } catch (e) {
         setStatus("Erro ao enviar.");
     }
